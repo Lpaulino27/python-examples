@@ -3,6 +3,8 @@ from game_data import data
 from art import logo, vs
 import random
 
+score = 0
+
 def getAccountInfo():
     '''To get account information'''
     return random.choice(data)
@@ -20,7 +22,7 @@ def compareFollowers(accFolA, accFolB):
 def game():
     ''' Main function to start the game '''
     account = ""
-    score = 0
+
 
     #Printing the starting logo
     print(logo)
@@ -42,17 +44,21 @@ def game():
     userChoosed = input("Who has more followers? Type 'A' or 'B': ")
     accountWinner = compareFollowers(follower_count_A, follower_count_B)
 
-    clear()
-    
-    if userChoosed == accountWinner:
-        score += 1
-        print(f"You're right! Current score: {score}")
+    if userChoosed.upper() == accountWinner.upper():
+        return True
     else:
-        print(f"Sorry, that's wrong. Final score: {score}")
+        return False
 
-    print(userChoosed.upper())
-    print(follower_count_A)
-    print(follower_count_B)
-    print(compareFollowers(follower_count_A, follower_count_B))
+#Starting the game
+bResult = game()
 
-game()
+print(bResult)
+#Count points and show results
+while bResult == True: 
+    score += 1
+    clear()
+    print(f"You're right! Current score: {score}")
+    bResult = game()
+else:
+    clear()
+    print(f"Sorry, that's wrong. Final score: {score}")
