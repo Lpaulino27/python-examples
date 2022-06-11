@@ -6,18 +6,18 @@ import random
 score = 0
 
 
-def getAccountInfo():
+def get_account_info():
     """To get account information"""
     return random.choice(data)
 
 
-def formatAccountInfo(account):
+def format_account_info(account):
     """To format account information"""
     return account["name"] + ", " + account["description"] + ", " + account["country"] + "."
 
 
-def compareFollowers(accFolA, accFolB):
-    if accFolA > accFolB:
+def compare_followers(acc_fol_a, acc_fol_b):
+    if acc_fol_a > acc_fol_b:
         return "A"
     else:
         return "B"
@@ -31,24 +31,24 @@ def game():
     print(logo)
 
     # Getting and printing account A random information
-    account = getAccountInfo()
-    follower_count_A = account["follower_count"]
-    print("Compare A: " + formatAccountInfo(account))
+    account = get_account_info()
+    follower_count_a = account["follower_count"]
+    print("Compare A: " + format_account_info(account))
 
     # Printing the VS logo
     print(vs)
 
     # Getting and printing account B random information
-    account = getAccountInfo()
-    follower_count_B = account["follower_count"]
-    print("Compare B: " + formatAccountInfo(account))
+    account = get_account_info()
+    follower_count_b = account["follower_count"]
+    print("Compare B: " + format_account_info(account))
 
     # Asking for an answer and making the comparison
-    userChoosed = input("Who has more followers? Type 'A' or 'B': ")
-    accountWinner = compareFollowers(follower_count_A, follower_count_B)
+    user_chose = input("Who has more followers? Type 'A' or 'B': ")
+    account_winner = compare_followers(follower_count_a, follower_count_b)
 
     # Checking the result
-    if userChoosed.upper() == accountWinner.upper():
+    if user_chose.upper() == account_winner.upper():
         return True
     else:
         return False
@@ -59,7 +59,7 @@ bResult = game()
 
 print(bResult)
 # Count points and show results
-while bResult == True:
+while bResult:
     score += 1
     clear()
     print(f"You're right! Current score: {score}")
