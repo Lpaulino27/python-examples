@@ -44,6 +44,7 @@ def game():
     userChoosed = input("Who has more followers? Type 'A' or 'B': ")
     accountWinner = compareFollowers(follower_count_A, follower_count_B)
 
+    #Checking the result
     if userChoosed.upper() == accountWinner.upper():
         return True
     else:
